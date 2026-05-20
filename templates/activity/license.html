@@ -1,0 +1,34 @@
+{% extends activity_base_template|default:"base.html" %}
+{% block title %}License — {{ activity_package_name }}{% endblock %}
+{% block extra_head %}
+  {% include "activity/_seo_head.html" %}
+{% endblock %}
+{% block content %}
+<div class="container py-4" style="max-width: 52rem;">
+  <h1 class="h3 mb-2">MIT License</h1>
+  <p class="lead text-muted">
+    <strong>{{ activity_package_name }}</strong> is open-source software by
+    <strong>{{ activity_author_name }}</strong> (<a href="{{ activity_github_url }}" rel="noopener noreferrer">{{ activity_author_handle }}</a>).
+  </p>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <p class="mb-2"><strong>Copyright © 2026 Nitesh Kumar Singh (nkscoder)</strong></p>
+      <p class="mb-0">
+        <a href="{{ activity_homepage_url }}">{{ activity_homepage_url }}</a> ·
+        <a href="{{ activity_github_url }}">{{ activity_github_url }}</a>
+      </p>
+    </div>
+  </div>
+
+  <pre class="bg-light p-3 rounded small" style="white-space: pre-wrap;">{{ license_text|default:activity_license_text }}</pre>
+
+  <p class="mt-4">
+    Maintainer: <strong>Nitesh Kumar Singh</strong> — brand <strong>nkscoder</strong>.
+    Report issues on <a href="{{ activity_github_url }}/issues">GitHub</a>.
+  </p>
+
+  <a href="{% url 'user_activity_dashboard' %}" class="btn btn-outline-primary btn-sm">← Back to dashboard</a>
+</div>
+{% include "activity/_opensource_footer.html" %}
+{% endblock %}

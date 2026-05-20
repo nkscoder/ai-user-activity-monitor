@@ -1,0 +1,33 @@
+{% if ACTIVITY_REQUEST_ID %}
+<script>
+(function () {
+  const requestId = "{{ ACTIVITY_REQUEST_ID|escapejs }}";
+  if (!requestId) return;
+
+  const start = Date.now();
+  const url = "{% url 'page_time' %}";
+
+  function sendDuration() {
+    const seconds = Math.round((Date.now() - start) / 1000);
+    if (seconds < 1) return;
+
+    const body = JSON.stringify({ request_id: requestId, duration_seconds: seconds });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
+      return;
+    }
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: body,
+      keepalive: true,
+    }).catch(function () {});
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") sendDuration();
+  });
+  window.addEventListener("pagehide", sendDuration);
+})();
+</script>
+{% endif %}

@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-user-activity-monitor"
+version = "1.0.0"
+description = "AI User Activity Monitor — open-source Django user activity dashboard by Nitesh Kumar Singh (nkscoder)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [
+    { name = "Nitesh Kumar Singh", email = "contact@nkscoder.in" },
+]
+maintainers = [
+    { name = "nkscoder", email = "contact@nkscoder.in" },
+]
+keywords = [
+    "django",
+    "user-activity",
+    "activity-monitor",
+    "analytics",
+    "dashboard",
+    "ai",
+    "nkscoder",
+    "Nitesh Kumar Singh",
+    "open-source",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Django",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "Django>=4.2",
+    "openpyxl>=3.1",
+]
+
+[project.urls]
+Homepage = "https://nkscoder.in"
+Documentation = "https://github.com/nkscoder/ai-user-activity-monitor#readme"
+Repository = "https://github.com/nkscoder/ai-user-activity-monitor"
+"Bug Tracker" = "https://github.com/nkscoder/ai-user-activity-monitor/issues"
+"Source Code" = "https://github.com/nkscoder/ai-user-activity-monitor"
+
+[project.optional-dependencies]
+dev = ["pytest-django"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["activity*"]

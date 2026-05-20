@@ -1,0 +1,17 @@
+<footer class="activity-oss-footer border-top mt-4 pt-3 pb-2 text-muted small" role="contentinfo">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <span>
+      <strong>{{ activity_package_name }}</strong> v{{ activity_package_version }} —
+      open source by <strong>{{ activity_author_name }}</strong> (<a href="{{ activity_homepage_url }}" target="_blank" rel="noopener noreferrer">{{ activity_author_handle }}</a>)
+    </span>
+    <span class="d-flex flex-wrap gap-3">
+      <a href="{{ activity_github_url }}" target="_blank" rel="noopener noreferrer" title="View source on GitHub — nkscoder">GitHub</a>
+      <a href="{% url 'activity_license' %}" title="MIT License — Nitesh Kumar Singh">License</a>
+      <a href="{{ activity_homepage_url }}" target="_blank" rel="noopener noreferrer">nkscoder.in</a>
+    </span>
+  </div>
+  <p class="mb-0 mt-1">
+    Django user activity analytics by Nitesh Kumar Singh · nkscoder ·
+    <a href="{{ activity_github_url }}" target="_blank" rel="noopener noreferrer">ai-user-activity-monitor</a>
+  </p>
+</footer>

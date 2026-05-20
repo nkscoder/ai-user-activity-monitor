@@ -1,0 +1,42 @@
+{# SEO meta for ai-user-activity-monitor — Nitesh Kumar Singh (nkscoder) #}
+<meta name="description" content="{{ activity_seo_description }}">
+<meta name="keywords" content="{{ activity_seo_keywords }}">
+<meta name="author" content="{{ activity_author_name }} ({{ activity_author_handle }})">
+<link rel="canonical" href="{{ activity_canonical_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ activity_seo_title }}">
+<meta property="og:description" content="{{ activity_seo_description }}">
+<meta property="og:site_name" content="{{ activity_seo_site_name }}">
+<meta property="og:url" content="{{ activity_canonical_url }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ activity_seo_title }}">
+<meta name="twitter:description" content="{{ activity_seo_description }}">
+<meta name="twitter:creator" content="@{{ activity_author_handle }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "{{ activity_package_name }}",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "description": "{{ activity_seo_description|escapejs }}",
+  "url": "{{ activity_github_url }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ activity_author_name }}",
+    "alternateName": "{{ activity_author_handle }}",
+    "url": "{{ activity_homepage_url }}"
+  },
+  "maintainer": {
+    "@type": "Person",
+    "name": "Nitesh Kumar Singh",
+    "alternateName": "nkscoder"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "license": "{{ activity_license_url }}"
+}
+</script>

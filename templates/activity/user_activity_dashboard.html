@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load activity_extras %}
+{% block title %}{{ activity_seo_site_name }} — {{ activity_author_name }}{% endblock %}
+{% block sub_header %}
+  {% include 'user_management_sub_header.html' %}
+{% endblock %}
+{% block extra_head %}
+  {% include "activity/_seo_head.html" %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <div>
+      <h3 class="mb-0">{{ activity_seo_site_name }}</h3>
+      <p class="text-muted small mb-0">{{ total_activity_logs }} events · {{ activity_package_name }} by {{ activity_author_name }} ({{ activity_author_handle }})</p>
+    </div>
+    <a href="{% url 'activity_user_list' %}" class="btn btn-outline-primary btn-sm">User list &amp; search</a>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card border-success">
+        <div class="card-body text-center">
+          <h6 class="text-muted">Online now</h6>
+          <p class="display-6 mb-0 text-success">{{ online_count }}</p>
+          <small class="text-muted">Active in last {{ online_cutoff_minutes }} min</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h6 class="text-muted">Inactive users</h6>
+          <p class="display-6 mb-0">{{ inactive_users|length }}</p>
+          <small class="text-muted">No page visit in {{ inactive_days }}+ days</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-primary">
+        <div class="card-body text-center">
+          <h6 class="text-muted">Total log entries</h6>
+          <p class="display-6 mb-0 text-primary">{{ total_activity_logs }}</p>
+          <small class="text-muted">All tracked events</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4 mb-4">
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">Login frequency</div>
+        <div class="card-body"><canvas id="loginChart" height="200"></canvas></div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">Most visited app sections <span class="text-muted small">(click a bar to filter users)</span></div>
+        <div class="card-body"><canvas id="visitChart" height="200"></canvas></div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">Time spent by app section <span class="text-muted small">(from page visits)</span></div>
+        <div class="card-body">
+          {% if top_time_labels %}
+          <canvas id="timeChart" height="200"></canvas>
+          {% else %}
+          <p class="text-muted text-center my-4">No time data yet. Browse a few pages and return — time is recorded when you leave each page.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">Users by role</div>
+        <div class="card-body"><canvas id="typeChart" height="200"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-header">Currently online</div>
+        <div class="card-body p-0">
+          <div class="table-responsive" style="max-height:300px">
+            <table class="table table-sm mb-0">
+              <thead><tr><th>User</th>{% for _f, header in user_list_columns|slice:":1" %}<th>{{ header }}</th>{% endfor %}<th>Last access</th></tr></thead>
+              <tbody>
+                {% for u in active_users %}
+                <tr>
+                  <td><a href="{% url 'activity_user_detail' u.id %}">{{ u|user_display }}</a></td>
+                  {% for field_name, _header in user_list_columns|slice:":1" %}
+                  <td>{{ u|user_field:field_name }}</td>
+                  {% endfor %}
+                  <td>{% if u.last_access_at %}{{ u.last_access_at|date:"d M, H:i:s" }}{% else %}—{% endif %}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3" class="text-muted text-center p-3">No users online in the last {{ online_cutoff_minutes }} minutes</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <div class="card">
+        <div class="card-header">Recent activity (live feed)</div>
+        <div class="card-body p-0">
+          <div class="table-responsive" style="max-height:300px">
+            <table class="table table-sm mb-0">
+              <thead><tr><th>When</th><th>User</th><th>Action</th><th>Search</th><th>Path</th></tr></thead>
+              <tbody>
+                {% for log in recent_logs %}
+                <tr>
+                  <td class="text-nowrap">{{ log.created_at|date:"d M H:i:s" }}</td>
+                  <td>{% if log.user %}<a href="{% url 'activity_user_detail' log.user_id %}">{{ log.user|user_display }}</a>{% else %}<span class="text-muted">Guest</span>{% endif %}</td>
+                  <td><span class="badge bg-{% if log.event_type == 'ACTION' %}warning text-dark{% else %}primary{% endif %}">{{ log.action|default:log.event_type }}</span></td>
+                  <td class="small">{% if log|meta_search_term %}<span class="badge bg-secondary">{{ log|meta_search_term }}</span>{% else %}—{% endif %}</td>
+                  <td class="small text-truncate" style="max-width:180px" title="{{ log.path }}">{{ log.path }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5" class="text-muted text-center p-3">No activity yet. Browse the site while logged in.</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include "activity/_opensource_footer.html" %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (typeof Chart === 'undefined') {
+    console.error('Chart.js failed to load');
+    return;
+  }
+
+  const loginLabels = {{ login_labels_json|safe }};
+  const loginValues = {{ login_values_json|safe }};
+  const visitLabels = {{ top_visit_labels_json|safe }};
+  const visitValues = {{ top_visit_values_json|safe }};
+  const visitFilterLabels = {{ top_visit_filters_json|safe }};
+  const timeLabels = {{ top_time_labels_json|safe }};
+  const timeValues = {{ top_time_values_json|safe }};
+  const typeLabels = {{ type_labels_json|safe }};
+  const typeValues = {{ type_values_json|safe }};
+
+  new Chart(document.getElementById('loginChart'), {
+    type: 'bar',
+    data: {
+      labels: loginLabels,
+      datasets: [{ label: 'Users', data: loginValues, backgroundColor: '#0d6efd' }]
+    },
+    options: { responsive: true, plugins: { legend: { display: false } } }
+  });
+
+  if (visitLabels.length) {
+    new Chart(document.getElementById('visitChart'), {
+      type: 'bar',
+      data: {
+        labels: visitLabels,
+        datasets: [{ label: 'Visits', data: visitValues, backgroundColor: '#198754' }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        indexAxis: 'y',
+        onClick: function (_event, elements) {
+          if (!elements || !elements.length) return;
+          const idx = elements[0].index;
+          const sectionName = visitFilterLabels[idx];
+          if (!sectionName) return;
+          const url = "{% url 'activity_user_list' %}?section=" + encodeURIComponent(sectionName);
+          window.location.href = url;
+        }
+      }
+    });
+  }
+
+  if (timeLabels.length && document.getElementById('timeChart')) {
+    new Chart(document.getElementById('timeChart'), {
+      type: 'bar',
+      data: {
+        labels: timeLabels,
+        datasets: [{ label: 'Seconds', data: timeValues, backgroundColor: '#6f42c1' }]
+      },
+      options: { responsive: true, plugins: { legend: { display: false } }, indexAxis: 'y' }
+    });
+  }
+
+  new Chart(document.getElementById('typeChart'), {
+    type: 'doughnut',
+    data: {
+      labels: typeLabels,
+      datasets: [{ data: typeValues, backgroundColor: ['#0d6efd', '#6c757d', '#ffc107'] }]
+    },
+    options: { responsive: true }
+  });
+});
+</script>
+{% endblock %}
