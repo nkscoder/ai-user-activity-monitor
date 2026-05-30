@@ -255,3 +255,4 @@ def get_user_list_queryset(search=""):
         qs = qs.filter(combined)
 
     return qs.order_by("-last_login_sort", "-last_activity", "-id")
+

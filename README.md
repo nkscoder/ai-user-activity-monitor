@@ -42,13 +42,29 @@ Uses Django **`AUTH_USER_MODEL`** everywhere. Your user model should support `is
 
 ## Quick install
 
+### From PyPI (recommended)
+
 ```bash
-git clone https://github.com/nkscoder/ai-user-activity-monitor.git activity
-cd activity
-pip install -e .
+pip install ai-user-activity-monitor
 ```
 
-Copy the `activity/` folder into your Django project, or install editable from the clone.
+PyPI: [pypi.org/project/ai-user-activity-monitor](https://pypi.org/project/ai-user-activity-monitor)
+
+### From GitHub
+
+```bash
+pip install git+https://github.com/nkscoder/ai-user-activity-monitor.git
+```
+
+### Editable / local development
+
+```bash
+git clone https://github.com/nkscoder/ai-user-activity-monitor.git
+cd ai-user-activity-monitor
+pip install -e ".[dev]"
+```
+
+> **Note:** PyPI package name is `ai-user-activity-monitor`; Django app label is `activity`.
 
 ### `settings.py`
 
@@ -123,15 +139,9 @@ Section names are resolved automatically, e.g. URL `/tickets/…` → app `verbo
 
 ---
 
-## Create this repo on GitHub
+## Publish to PyPI (maintainers)
 
-```bash
-cd activity
-git init
-git add .
-git commit -m "Initial commit: ai-user-activity-monitor Django app"
-gh repo create ai-user-activity-monitor --public --source=. --remote=origin --push
-```
+See [PUBLISHING.md](PUBLISHING.md) for build, TestPyPI, and production upload steps.
 
 ---
 
