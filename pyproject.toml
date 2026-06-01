@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ai-user-activity-monitor"
-version = "1.0.0"
+version = "1.0.1"
 description = "AI User Activity Monitor — open-source Django user activity dashboard by Nitesh Kumar Singh (nkscoder)"
 readme = "README.md"
 license = "MIT"
@@ -50,7 +50,10 @@ Homepage = "https://github.com/nkscoder/ai-user-activity-monitor"
 Documentation = "https://github.com/nkscoder/ai-user-activity-monitor#readme"
 Repository = "https://github.com/nkscoder/ai-user-activity-monitor"
 "Bug Tracker" = "https://github.com/nkscoder/ai-user-activity-monitor/issues"
-"Organization" = "https://nkscoder.in"
+"PyPI Profile" = "https://pypi.org/user/nkscoder/"
+"Author Website" = "https://nkscoder.in"
+"Author GitHub" = "https://github.com/nkscoder"
+"LinkedIn" = "https://www.linkedin.com/in/nitesh-kumar-singh-897437a2/"
 
 [project.optional-dependencies]
 dev = ["pytest-django", "build", "twine"]
