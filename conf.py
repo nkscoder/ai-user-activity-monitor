@@ -14,7 +14,7 @@ DEFAULTS = {
     "AUTHOR_NAME": "Nitesh Kumar Singh",
     "AUTHOR_HANDLE": "nkscoder",
     "PACKAGE_NAME": "ai-user-activity-monitor",
-    "PACKAGE_VERSION": "1.0.2",
+    "PACKAGE_VERSION": "1.0.3",
     "SEO_SITE_NAME": "AI User Activity Monitor",
     "SEO_DESCRIPTION": (
         "ai-user-activity-monitor — open-source Django user activity tracking by "

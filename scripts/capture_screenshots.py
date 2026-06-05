@@ -25,19 +25,19 @@ def main():
 
     OUT.mkdir(parents=True, exist_ok=True)
     shots = [
-        ("preview-dashboard.html", "dashboard.png", 1400, 1100),
-        ("preview-user-list.html", "user-list.png", 1400, 900),
+        ("preview-dashboard.html", "dashboard.png"),
+        ("preview-user-list.html", "user-list.png"),
     ]
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(device_scale_factor=2)
-        for html_name, png_name, width, height in shots:
+        page = browser.new_page(device_scale_factor=2, viewport={"width": 1280, "height": 900})
+        for html_name, png_name in shots:
             html_path = OUT / html_name
-            page.set_viewport_size({"width": width, "height": height})
             page.goto(html_path.as_uri(), wait_until="networkidle")
-            page.wait_for_timeout(800)
-            page.screenshot(path=str(OUT / png_name), full_page=True)
+            page.wait_for_timeout(1000)
+            root = page.locator(".screenshot-root")
+            root.screenshot(path=str(OUT / png_name))
             print(f"Wrote {OUT / png_name}")
         browser.close()
 

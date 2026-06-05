@@ -13,7 +13,7 @@ Open-source **Django user activity monitor** — page views, logins, search term
 | **Repo** | [ai-user-activity-monitor](https://github.com/nkscoder/ai-user-activity-monitor) |
 | **PyPI** | [pypi.org/project/ai-user-activity-monitor](https://pypi.org/project/ai-user-activity-monitor) |
 | **Django app** | `activity` |
-| **Version** | 1.0.2 |
+| **Version** | 1.0.3 |
 | **License** | [MIT](LICENSE) |
 
 ---
