@@ -1,0 +1,6 @@
+-i https://pkgs.safetycli.com/repository/nkscoder/project/activity/pypi/simple/
+# Dev dependencies (mirrors pyproject.toml [project.optional-dependencies.dev])
+-r requirements.txt
+pytest-django
+build
+twine

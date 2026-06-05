@@ -1,0 +1,4 @@
+-i https://pkgs.safetycli.com/repository/nkscoder/project/activity/pypi/simple/
+# Runtime dependencies (mirrors pyproject.toml for Safety CI/init)
+Django>=4.2
+openpyxl>=3.1
