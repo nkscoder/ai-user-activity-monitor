@@ -1,6 +1,7 @@
 import uuid
 import ipaddress
 from datetime import datetime
+from typing import Optional
 
 from django.contrib.auth import get_user_model
 from django.db.models import CharField, Count, Max, Q, Value

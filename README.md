@@ -16,6 +16,10 @@ Open-source **Django user activity monitor** — page views, logins, search term
 | **Version** | 1.0.5 |
 | **License** | [MIT](LICENSE) |
 
+[![Django CI](https://github.com/nkscoder/ai-user-activity-monitor/actions/workflows/django.yml/badge.svg)](https://github.com/nkscoder/ai-user-activity-monitor/actions/workflows/django.yml)
+[![Python package](https://github.com/nkscoder/ai-user-activity-monitor/actions/workflows/python-package.yml/badge.svg)](https://github.com/nkscoder/ai-user-activity-monitor/actions/workflows/python-package.yml)
+[![Conda CI](https://github.com/nkscoder/ai-user-activity-monitor/actions/workflows/python-package-conda.yml/badge.svg)](https://github.com/nkscoder/ai-user-activity-monitor/actions/workflows/python-package-conda.yml)
+
 ---
 
 ## Screenshots
