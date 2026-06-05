@@ -31,7 +31,7 @@ def main():
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page(device_scale_factor=2, viewport={"width": 1280, "height": 900})
+        page = browser.new_page(device_scale_factor=2, viewport={"width": 1200, "height": 800})
         for html_name, png_name in shots:
             html_path = OUT / html_name
             page.goto(html_path.as_uri(), wait_until="networkidle")
