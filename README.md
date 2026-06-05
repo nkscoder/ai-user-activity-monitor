@@ -5,7 +5,7 @@
 
 Open-source **Django user activity monitor** — page views, logins, search terms, time-on-page, and staff dashboards. Built by **Nitesh Kumar Singh** (`nkscoder`) as a reusable `activity` app for any Django project.
 
-![AI User Activity Monitor — staff analytics dashboard](https://raw.githubusercontent.com/nkscoder/ai-user-activity-monitor/main/docs/screenshots/dashboard.png)
+![AI User Activity Monitor — staff analytics dashboard](https://cdn.jsdelivr.net/gh/nkscoder/ai-user-activity-monitor@v1.0.5/docs/screenshots/dashboard.png)
 
 | | |
 |---|---|
@@ -13,7 +13,7 @@ Open-source **Django user activity monitor** — page views, logins, search term
 | **Repo** | [ai-user-activity-monitor](https://github.com/nkscoder/ai-user-activity-monitor) |
 | **PyPI** | [pypi.org/project/ai-user-activity-monitor](https://pypi.org/project/ai-user-activity-monitor) |
 | **Django app** | `activity` |
-| **Version** | 1.0.4 |
+| **Version** | 1.0.5 |
 | **License** | [MIT](LICENSE) |
 
 ---
@@ -24,15 +24,15 @@ Open-source **Django user activity monitor** — page views, logins, search term
 
 Online users, login frequency, app-section visits, time-on-page charts, and a live activity feed.
 
-![Dashboard — charts, online users, live feed](https://raw.githubusercontent.com/nkscoder/ai-user-activity-monitor/main/docs/screenshots/dashboard.png)
+![Dashboard — charts, online users, live feed](https://cdn.jsdelivr.net/gh/nkscoder/ai-user-activity-monitor@v1.0.5/docs/screenshots/dashboard.png)
 
 ### User list & search
 
 Searchable user table with pagination, last activity, login counts, and Excel export.
 
-![User list — search, pagination, export](https://raw.githubusercontent.com/nkscoder/ai-user-activity-monitor/main/docs/screenshots/user-list.png)
+![User list — search, pagination, export](https://cdn.jsdelivr.net/gh/nkscoder/ai-user-activity-monitor@v1.0.5/docs/screenshots/user-list.png)
 
-> **PyPI note:** README images use absolute GitHub URLs so they render on [pypi.org/project/ai-user-activity-monitor](https://pypi.org/project/ai-user-activity-monitor).
+> **PyPI note:** README images use [jsDelivr CDN](https://www.jsdelivr.com/) URLs (tag-pinned) so they render reliably on [pypi.org](https://pypi.org/project/ai-user-activity-monitor). Update `@v1.0.5` in image URLs on each release.
 
 ---
 

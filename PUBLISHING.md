@@ -73,7 +73,13 @@ pip install ai-user-activity-monitor
 
 ## 5. Screenshots (GitHub + PyPI)
 
-README images must be on GitHub `main` **before** PyPI upload (PyPI loads them from raw GitHub URLs).
+Push screenshots to GitHub **before** PyPI upload. README images must use **jsDelivr** (PyPI often blocks `raw.githubusercontent.com`):
+
+```
+https://cdn.jsdelivr.net/gh/nkscoder/ai-user-activity-monitor@v1.0.5/docs/screenshots/dashboard.png
+```
+
+Update the `@v1.0.5` tag in `README.md` on each release.
 
 ```bash
 python scripts/capture_screenshots.py   # or replace PNGs manually

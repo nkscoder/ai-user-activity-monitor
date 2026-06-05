@@ -24,13 +24,13 @@ git push origin main
 
 ## PyPI
 
-README uses absolute URLs:
+README uses jsDelivr (reliable on PyPI):
 
 ```
-https://raw.githubusercontent.com/nkscoder/ai-user-activity-monitor/main/docs/screenshots/dashboard.png
+https://cdn.jsdelivr.net/gh/nkscoder/ai-user-activity-monitor@v1.0.5/docs/screenshots/dashboard.png
 ```
 
-Push screenshots to GitHub **before** uploading a new PyPI release so images appear on the PyPI project page.
+Update `@v1.0.5` to the new release tag in `README.md` before each PyPI upload.
 
 ## Replace with real app screenshots (optional)
 
