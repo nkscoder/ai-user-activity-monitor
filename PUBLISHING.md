@@ -71,7 +71,21 @@ pip install ai-user-activity-monitor
 
 ---
 
-## 5. Version bumps
+## 5. Screenshots (GitHub + PyPI)
+
+README images must be on GitHub `main` **before** PyPI upload (PyPI loads them from raw GitHub URLs).
+
+```bash
+python scripts/capture_screenshots.py   # or replace PNGs manually
+git add docs/screenshots/*.png README.md
+git push origin main
+```
+
+Then build and upload. PyPI page: [pypi.org/project/ai-user-activity-monitor](https://pypi.org/project/ai-user-activity-monitor)
+
+---
+
+## 6. Version bumps
 
 Before each release:
 
@@ -90,7 +104,7 @@ twine upload dist/*
 
 ---
 
-## 6. GitHub Actions (optional)
+## 7. GitHub Actions (optional)
 
 See `.github/workflows/publish-pypi.yml`. Add repository secrets:
 

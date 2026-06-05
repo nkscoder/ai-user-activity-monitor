@@ -5,13 +5,34 @@
 
 Open-source **Django user activity monitor** — page views, logins, search terms, time-on-page, and staff dashboards. Built by **Nitesh Kumar Singh** (`nkscoder`) as a reusable `activity` app for any Django project.
 
+![AI User Activity Monitor — staff analytics dashboard](https://raw.githubusercontent.com/nkscoder/ai-user-activity-monitor/main/docs/screenshots/dashboard.png)
+
 | | |
 |---|---|
 | **Maintainer** | Nitesh Kumar Singh — [nkscoder.in](https://nkscoder.in) |
 | **Repo** | [ai-user-activity-monitor](https://github.com/nkscoder/ai-user-activity-monitor) |
+| **PyPI** | [pypi.org/project/ai-user-activity-monitor](https://pypi.org/project/ai-user-activity-monitor) |
 | **Django app** | `activity` |
-| **Version** | 1.0.0 |
+| **Version** | 1.0.2 |
 | **License** | [MIT](LICENSE) |
+
+---
+
+## Screenshots
+
+### Analytics dashboard
+
+Online users, login frequency, app-section visits, time-on-page charts, and a live activity feed.
+
+![Dashboard — charts, online users, live feed](https://raw.githubusercontent.com/nkscoder/ai-user-activity-monitor/main/docs/screenshots/dashboard.png)
+
+### User list & search
+
+Searchable user table with pagination, last activity, login counts, and Excel export.
+
+![User list — search, pagination, export](https://raw.githubusercontent.com/nkscoder/ai-user-activity-monitor/main/docs/screenshots/user-list.png)
+
+> **PyPI note:** README images use absolute GitHub URLs so they render on [pypi.org/project/ai-user-activity-monitor](https://pypi.org/project/ai-user-activity-monitor).
 
 ---
 
